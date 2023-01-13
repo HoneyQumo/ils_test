@@ -1,4 +1,8 @@
 .App {
 	min-height: 100vh;
-	font-family: 'Source Sans Pro', sans-serif;
+}
+
+.leaflet-icon {
+	margin-top: -48px;
+	margin-left: -3px;
 }

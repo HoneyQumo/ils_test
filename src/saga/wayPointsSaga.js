@@ -1,4 +1,4 @@
-import {call, put, takeEvery, take} from 'redux-saga/effects'
+import {call, put, takeEvery} from 'redux-saga/effects'
 import {decode} from '@googlemaps/polyline-codec'
 import {wayPointsFailure, wayPointsSuccess} from '../store/slices/tableSlice'
 

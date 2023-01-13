@@ -12,9 +12,9 @@ const tableSlice = createSlice({
 			{key: 5, orderNumber: '№5', fromLat: 59.83567701, fromLng: 30.38064206, toLat: 59.84660399, toLng: 30.29496392},
 		],
 		selectedRow: {},
-		coordinates: [],
+		coordinates: null,
 		wayPoints: [],
-		wayPointsIsLoading: false
+		wayPointsIsLoading: false,
 	},
 	reducers: {
 		addRowToSelectedRow: (state, action) => {

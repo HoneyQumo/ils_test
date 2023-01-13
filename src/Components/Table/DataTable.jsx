@@ -15,9 +15,9 @@ const DataTable = () => {
 			const {fromLat, toLat, fromLng, toLng} = selectedRows[0]
 			dispatch(addRowToSelectedRow(selectedRows[0]))
 			// Тут ширина и долгота поменяны местами, потому что в запросе сервиса project-osrm.org идет сначала долгота, потом широта.
-			dispatch(setCoordinates([[fromLng, fromLat],[toLng, toLat]]))
-			dispatch(wayPointsFetch([[fromLng, fromLat],[toLng, toLat]]))
-		}
+			dispatch(setCoordinates([[fromLng, fromLat], [toLng, toLat]]))
+			dispatch(wayPointsFetch([[fromLng, fromLat], [toLng, toLat]]))
+		},
 	}
 
 	return (
