@@ -1,25 +1,14 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import './Map.css'
 import {Col} from 'antd'
-import {MapContainer, Polyline, TileLayer} from 'react-leaflet'
+import {MapContainer, Marker, Polyline, Popup, TileLayer} from 'react-leaflet'
 import {useSelector} from 'react-redux'
 
 
 const Map = () => {
-	const selectedRow = useSelector(state => state.table.selectedRow)
-	const coordinates = useSelector(state => state.table.coordinates)
-	console.log(coordinates)
-
-
-	// useEffect(() => {
-	// 	const fetchData = async () => {
-	// 		const res = await fetch('https://router.project-osrm.org/route/v1/driving/59.84660399,30.29496392;59.82934196,30.42423701?alternatives=false&steps=true')
-	// 		const data = await res.json()
-	// 		console.log(data)
-	// 		// console.log(data.routes[0].legs[0].steps[0].maneuver.location)
-	// 	}
-	// 	fetchData()
-	// })
+	const wayPoints = useSelector(state => state.table.wayPoints)
+	const coord = useSelector(state => state.table.coordinates)
+	console.log(wayPoints)
 
 	return (
 		<Col span={14}>
@@ -28,7 +17,10 @@ const Map = () => {
 					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 					attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 				/>
-				<Polyline pathOptions={{color: 'red'}} positions={coordinates}/>
+				<Polyline pathOptions={{color: 'red'}} positions={wayPoints}/>
+				{coord.length > 0 && <Marker position={[59, 30]}>
+					<Popup>Начало маршрута</Popup>
+				</Marker>}
 			</MapContainer>
 		</Col>
 	)
