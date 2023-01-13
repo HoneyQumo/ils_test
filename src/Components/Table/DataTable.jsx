@@ -2,7 +2,7 @@ import React from 'react'
 import './DataTable.css'
 import {Col, Table} from 'antd'
 import {useDispatch, useSelector} from 'react-redux'
-import {addRowToSelectedRow} from '../../store/slices/tableSlice'
+import {addRowToSelectedRow, setCoordinates} from '../../store/slices/tableSlice'
 
 
 const DataTable = () => {
@@ -11,7 +11,12 @@ const DataTable = () => {
 
 	const rowSelection = {
 		type: 'radio',
-		onChange: (selectedRowKeys, selectedRows) => dispatch(addRowToSelectedRow(selectedRows)),
+		// onChange: (selectedRowKeys, selectedRows) => dispatch(addRowToSelectedRow(selectedRows)),
+		onChange: (selectedRowKeys, selectedRows) => {
+			const {fromLat, toLat, fromLng, toLng} = selectedRows[0]
+			dispatch(addRowToSelectedRow(selectedRows[0]))
+			dispatch(setCoordinates([[fromLat, fromLng],[toLat, toLng]]))
+		}
 	}
 
 	return (

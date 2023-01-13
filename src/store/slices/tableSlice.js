@@ -12,14 +12,18 @@ const tableSlice = createSlice({
 			{key: 5, orderNumber: '№5', fromLat: 59.83567701, toLat: 59.84660399, fromLng: 30.38064206, toLng: 30.29496392},
 		],
 		selectedRow: {},
+		coordinates: []
 	},
 	reducers: {
 		addRowToSelectedRow: (state, action) => {
-			state.selectedRows = action.payload
+			state.selectedRow = action.payload
 		},
+		setCoordinates: (state, action) => {
+			state.coordinates = action.payload
+		}
 	},
 })
 
 export default tableSlice.reducer
 
-export const {addRowToSelectedRow} = tableSlice.actions
+export const {addRowToSelectedRow, setCoordinates} = tableSlice.actions

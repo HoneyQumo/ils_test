@@ -6,13 +6,10 @@ import {useSelector} from 'react-redux'
 
 
 const Map = () => {
-	const selectedRows = useSelector(state => state.table.selectedRows)
-	console.log(selectedRows)
+	const selectedRow = useSelector(state => state.table.selectedRow)
+	const coordinates = useSelector(state => state.table.coordinates)
+	console.log(coordinates)
 
-	const polyline = [
-		[59.84660399, 30.29496392],
-		[59.82934196, 30.42423701],
-	]
 
 	// useEffect(() => {
 	// 	const fetchData = async () => {
@@ -31,7 +28,7 @@ const Map = () => {
 					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 					attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 				/>
-				<Polyline pathOptions={{color: 'red'}} positions={polyline}/>
+				<Polyline pathOptions={{color: 'red'}} positions={coordinates}/>
 			</MapContainer>
 		</Col>
 	)
